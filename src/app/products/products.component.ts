@@ -1,17 +1,18 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { Product } from './interfaces/product';
-import { ProductService } from './services/product.service';
+import { CommonModule, NgFor } from '@angular/common';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { Product } from '../interfaces/product';
+import { ProductService } from '../services/product.service';
+import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  imports: [CommonModule, ProductCardComponent, NgFor, RouterLink],
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
-export class AppComponent implements OnInit {
+export class ProductsComponent implements OnInit {
   title = 'marketplace-front';
   products = signal<Product[]>([]);
   constructor(private readonly productService: ProductService) {}

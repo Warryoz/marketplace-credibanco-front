@@ -1,0 +1,26 @@
+<header>
+    <nav>
+      <div class="container">
+        <a routerLink="/">Products</a>
+        <a routerLink="/transactions">Transactions</a>
+        <a routerLink="/cart">Shopping Cart</a>
+      </div>
+    </nav>
+  </header>
+  
+  <section class="features">
+    <div class="container">
+      <app-product-card
+        *ngFor="let product of products()"
+        [product]="product"
+        (addToCart)="addToShoppingCart($event)"
+      ></app-product-card>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 Marketplace CrediBanco</p>
+    </div>
+  </footer>
+  
